@@ -104,7 +104,7 @@ class JsonMapping
       raise TransformError, "Undefined transform named #{schema['transform']}" unless @transforms.key?(schema['transform'])
       raise TransformError, 'Transforms should respond to the \'call\' method' unless @transforms[schema['transform']].respond_to?(:call)
 
-      value = @transforms[schema['transform']].call(value)
+      value = @transforms[schema['transform']].call(value, input_hash)
     end
 
     output[schema['name']] = value
